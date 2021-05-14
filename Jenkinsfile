@@ -1,23 +1,15 @@
 pipeline {
     agent any
 
-    tools {
-        maven "3.6.0" // You need to add a maven with name "3.6.0" in the Global Tools Configuration page
-    }
 
     stages {
         stage("Build") {
             steps {
                 sh 'chmod 777 mvnw'
-                sh "mvn -version"
-                sh "mvn clean install"
+                sh "./mvnw -version"
+                sh "./mvnw clean install"
             }
         }
     }
 
-    post {
-        always {
-            cleanWs()
-        }
-    }
 }
